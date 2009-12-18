@@ -684,7 +684,8 @@ struct {const char *key; CommandInfo value;} cmdlist[] =
     { "menu_image_remove",              {menu_remove_image, TRUE}       },
     { "menu_editable_remove",           {menu_remove_edit, TRUE}        },
     { "hardcopy",                       {hardcopy, TRUE}                },
-    { "include",                        {include, TRUE}                 }
+    { "include",                        {include, TRUE}                 },
+    { "sim_keypress",                   {sim_keypress, TRUE}            }
 };
 
 void
@@ -1522,6 +1523,21 @@ talk_to_socket(WebKitWebView *web_view, GArray *argv, GString *result) {
     /* clean up */
     close(fd);
     return;
+}
+
+void
+sim_keypress(WebKitWebView *page, GArray *argv, GString *result) {
+    (void)page; (void)result;
+    gchar* keyname;
+    guint keyval;
+    if(argv->len < 1) {
+        g_printerr("sim_keypress called with only %d args (need at least one).\n",
+            (int)argv->len);
+        return;
+    }
+    keyname = g_array_index(argv, gchar*, 0);
+    keyval = gdk_keyval_from_name(keyname);
+    gtk_test_widget_send_key((GtkWidget*)page, keyval, 0);
 }
 
 void

@@ -258,6 +258,9 @@ print(WebKitWebView *page, GArray *argv, GString *result);
 void
 commands_hash(void);
 
+void
+sim_keypress(WebKitWebView *page, GArray *argv, GString *result);
+
 bool
 file_exists (const char * filename);
 

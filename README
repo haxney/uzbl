@@ -15,8 +15,8 @@ In the future more things may come, but for now:
 #### uzbl-core: main component meant for integration with other tools and scripts
 
  * Uses WebkitGtk+ for rendering, network interaction (libsoup).  Css, javascript, plugin support etc come for free
- * Provides interfaces to get data in (commands/configuration) and out (events): stdin/stdout/fifo/unix sockets    
- * You see a webkit view and (optionally) a statusbar which gets popuplated externally       
+ * Provides interfaces to get data in (commands/configuration) and out (events): stdin/stdout/fifo/unix sockets
+ * You see a webkit view and (optionally) a statusbar which gets popuplated externally
  * No built-in means for url changing, loading/saving of bookmarks, saving history, keybinds, downloads, ...
  * Extra functionality: many sample scripts come with it, on <a href="http://www.uzbl.org/wiki/scripts">uzbl wiki</a> or write them yourself
  * Entire configuration/state can be changed at runtime
@@ -27,9 +27,9 @@ In the future more things may come, but for now:
  * Uses a set of scripts (mostly python) that will fit most people, so things work out of the box.  Yet plenty of room for customisation
  * Brings everything you expect: url changing, history, downloads, form filling, link navigation, cookies, event management etc
  * Advanced, customizable keyboard interface with support for modes, modkeys, multichars, variables (keywords) etc. (eg you can tweak the interface to be vim-like, emacs-like or any-other-program-like)
- * Adequate default configuration      
+ * Adequate default configuration
  * Focus on plaintext storage for your data and configs in simple, parseable formats and adherence to the xdg basedir spec
- * Visually, similar to uzbl-core except that the statusbar contains useful things.  One window per webpage  
+ * Visually, similar to uzbl-core except that the statusbar contains useful things.  One window per webpage
 
 #### uzbl-tabbed: wraps around uzbl-browser and multiplexes it
 
@@ -182,11 +182,13 @@ The following commands are recognized:
    - open print dialog
 * `include <file>`
    - read contents of file and interpret commands
-
+* `sim_keypress <key>`
+   - simulate a pressed key.
+   - only supports a single key at a time, so <key> must be a single character.
 
 ### VARIABLES AND CONSTANTS
 Uzbl has a lot of internal variables and constants.  You can get the values (using the `print` command, see above), and for variables you can also change the value at
-runtime.  Some of the values can be passed at start up through commandline arguments, others need to be set by using commands (eg in config file). 
+runtime.  Some of the values can be passed at start up through commandline arguments, others need to be set by using commands (eg in config file).
 Some of them have default values (see config.h)
 Some variables have callback functions which will get called after setting the variable to perform some additional logic (see below)
 
